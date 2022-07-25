@@ -1,0 +1,88 @@
+<% if flash[:notice] %>
+    <div class="notification is-success global-notification">
+        <p class="notice">
+            <%= notice %>
+        </p>
+    </div>
+    <% end %>
+        <% if flash[:alert] %>
+            <div class="notification is-danger global-notification">
+                <p class="alert">
+                    <%= alert %>
+                </p>
+            </div>text-center
+            <% end %>
+
+
+
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div class="container-fluid ">
+                  <a class="nav-item me-5 mb-3"  href="#"><%= image_tag("kart.png",class:"img-fluid ",width:"200px")%></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+  
+                    <ul class="navbar-nav mx-auto mt-3 mb-lg-0 gap-4" >
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Fashion
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+                      <li class="heart nav-item"><a href="#" class="nav-link "> Favourite</a></li>
+                      <li class="nav-item">
+                        <div class=" ">
+
+                            <% if user_signed_in? %>
+                                <!-- <%= link_to 'Sell' ,'#', class: "navbar-item button is-dark" %> -->
+            
+                                <div class="navbar-item has-dropdown is-hoverable">
+                                    <!-- <%= link_to 'Account' , edit_user_registration_path,
+                                            class: "navbar-link" %> -->
+                                    <div class="navbar-dropdown is-right d-flex jus">
+                                        <%= link_to (current_user.name), edit_user_registration_path,
+                                            class:"align-items-center pt-2 pe-3 text-decoration-none text-muted text-capitalize" %>
+                                           
+                                    <% if cart_has_items %>
+                                    <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %><em
+                                                class="bi bi-cart3 kart"></em> 
+                                        <span class="cart">cart <%= cart_count_over_one %></span><% end %> <% end %>
+                        
+                                            <%= button_to "Log Out" , destroy_user_session_path, method:
+                                                :delete, class:"navbar-item btn btn-danger mx-5" %>
+                                    </div>
+                                </div>
+                                <% else %>
+                                    <%= link_to "Sign In" , new_user_session_path, class:"navbar-item
+                                        button is-warning" %>
+                                        <%= link_to "Sign up" , new_user_registration_path,
+                                            class:"navbar-item button is-warning"%>
+                                            <% end %>
+            
+                        </div>
+                                  </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+
+
+
+
+
