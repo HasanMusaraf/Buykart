@@ -101,6 +101,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -289,6 +293,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   carrierwave
   devise (~> 4.7)
+  dotenv-rails
   gravatar_image_tag (~> 1.2)
   guard (~> 2.14, >= 2.14.1)
   guard-livereload (~> 2.5, >= 2.5.2)

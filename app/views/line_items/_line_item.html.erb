@@ -1,23 +1,37 @@
-<div class="columns align-items-center">
-  <div class="column is-1">
-    <%= line_item.quantity %>
-  </div>
-  <div class="column is-2">
+<div class="row">
+
+  <div class="col-md">
     <figure class="is-128x128 image">
-      <%= image_tag(line_item.product.image) %>
+      <%= image_tag(line_item.product.image,class:"col-lg-7 col-4 img-fluid   ") %>
     </figure>
   </div>
-  <div class="column is-9">
-    <strong><%= line_item.product.title %></strong>
-    <div class="columns align-items-center">
-      <div class="content column is-9">
-        <%= truncate(line_item.product.description, length: 140) %>
+  <div class="col-md">
+    <strong><%= line_item.product.title %></strong><br>
+    <small class="text-muted">XS</small>
+    <small class="text-dark">Seller : Hasan</small>
+
+    <div >
+      <div>
+        <%= line_item.product.brand %>
       </div>
-      <div class="column is-3 has-text-right">
+      <div >
         <strong class="f4"><%= "Rs: #{(line_item.total_price)}" %></strong>
       </div>
+      <div class="row">
+        <p class="col-lg-5 fs-5">Quantity:</p>
+           <p class="col-lg-2  border text-center py-1"><%= line_item.quantity %></p>
+      </div>
+    
     </div>
   </div>
+
+  <div class="col-md">
+    <small>Delivery by 7 Aug, Sunday | <small class="text-success">Free</small><small
+    class="text-decoration-line-through text-muted"> ₹40</small> </small>
+
+
+  </div>
+
 </div>
 
 <div class="has-text-right">

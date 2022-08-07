@@ -1,35 +1,35 @@
+<div class="row mx-auto w-75 border border-2 regular shadow mt-5" style="height:75vh;">
+  <div class="col-md-6  d-flex flex-column text-center justify-content-center " style="background: #aec5b8;">
+       
+      <h1>Welcome to Buy_Kart</h1>
+
+      <h3>Are you ready to Sell your Products?</h3>
+
+  </div>
+
+
+  <div class="col-md-4 mx-auto my-auto ">
+
+
 <%= simple_form_for(@product) do |f| %>
   <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <div class="form-inputs">
-        <%= f.input :brand %>
+
+
+        <div class="form-inputs row g-3 ">
+          <%= f.input :brand %>
             <%= f.input :description %>
-                  <%= f.input :title %>
-                    <%= f.input :price %>
-                    <%= f.input :image %>
-
-      </div>
-
-     
-
-      <!-- <div class="field">
-        <div class="control">
-          <label class="label">Add images</label>
-            <div class="file">
-            <label class="file-label">
-              <%= f.input :image, as: :file, input_html: { class:"file-input instrument-image" }, label: false, wrapper: false %>
-              <span class="file-cta">
-                <span class="file-icon"><i class="fa fa-upload"></i></span>
-                <span class="file-label">Choose a file…</span>
-              </span>
-            </label>
-            </div>
-          </div>
-      </div>
-      <output id="list"></output> -->
-
-        <div class="form-actions">
-          <%= f.button :submit %>
+              <%= f.input :title %>
+                <%= f.input :price %>
+                  <%= f.input :image %>
         </div>
-        <% end %>
+
+
+        <div class="form-actions mt-3">
+          <%= f.button :submit, class: " btn btn-success" %>
+        </dv>
+
+      <% end %>
+        </div>
+    </div>

@@ -20,6 +20,10 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def search
+      @products1 = Product.where("title Like ?", "%" + params[:q] + "%")
+  end
+
   # POST /products or /products.json
   def create
     @product = current_user.products.build(product_params)
@@ -50,8 +54,8 @@ class ProductsController < ApplicationController
   
   # DELETE /products/1 or /products/1.json
   def destroy
-    # @product = Product.find(params[:id])
-    # @product.destroy
+    @product = Product.find(params[:id])
+    @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
       format.json { head :no_content }
@@ -66,6 +70,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:brand, :model, :description, :condition, :finish, :title, :price, :image)
+      params.require(:product).permit(:brand, :description, :title, :price, :image)
     end
 end

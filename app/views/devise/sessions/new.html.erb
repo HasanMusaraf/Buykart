@@ -1,20 +1,38 @@
-<h2>Log in</h2>
+<h2 class="text-center my-4">Log in</h2>
+
+
+<div class="row mx-auto w-75 border border-3  regular shadow " style="height:75vh;">
+  <div class="col-md-6  d-flex flex-column text-center justify-content-center " style="background-image: url(https://img.freepik.com/free-photo/3d-rendering-illustration-green-balls_181624-58606.jpg?w=740&t=st=1659508294~exp=1659508894~hmac=b33cc861fac4bdf39268eb2d0f7d2b15d5c7a627ee092b0eb5809d55189e1725);">
+       
+      <h1 class="text-white">Welcome Back to Buy_Kart</h1>
+
+      <h3 class="text-white">Are you ready to start the elite?</h3>
+
+  </div>
+
+
+  <div class="col-md-4 mx-auto my-auto ">
+
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
+  <div class="form-inputs row g-2">
     <%= f.input :email,
                 required: false,
-                autofocus: true,
+                autofocus: true,placeholder:"Registered Email", 
                 input_html: { autocomplete: "email" } %>
     <%= f.input :password,
-                required: false,
+                required: false,placeholder:"Registered Password", 
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Continue", class:"btn btn-success mt-2", style:"background: #337973;" %>
+    <%= render "devise/shared/links" %>
+
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+  </div>
+</div>

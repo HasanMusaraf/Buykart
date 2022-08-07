@@ -1,30 +1,53 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="container-fluid  my-3">
+  <h2 class="text-center mb-4">Sign up</h2>
 
-  <div class="form-inputs">
-      <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" } %>
+<div class="row mx-auto w-75 border border-2 regular shadow" style="height:75vh;">
+  <div class="col-md-6  d-flex flex-column text-center justify-content-center " style="background: #aec5b8;background-image: url(https://img.freepik.com/free-photo/3d-rendering-illustration-green-balls_181624-58606.jpg?w=740&t=st=1659508294~exp=1659508894~hmac=b33cc861fac4bdf39268eb2d0f7d2b15d5c7a627ee092b0eb5809d55189e1725);">
+       
+      <h1 class="text-white">Welcome to Buy_Kart</h1>
 
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <h3 class="text-white">Are you ready to join the elite?</h3>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="col-md-4 mx-auto my-auto ">
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+    
+      <div class="form-inputs row g-2">
+          <%= f.input :name,
+                    required: true,
+                    autofocus: true, placeholder: "My Name",
+                    input_html: { autocomplete: "name" } %>
+    
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true, placeholder: "my123@gmail.com",
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true, placeholder: "Password",
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true, placeholder: "Confirm Password ",
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+    
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class:"btn btn-success mt-3" %>
+        <%= render "devise/shared/links" %>
+
+      </div>                          
+
+    <% end %>
+    
+    </div>
+ 
+    
+</div>
+
+</div>
+

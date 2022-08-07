@@ -1,41 +1,92 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @product.brand %>
+<p id="notice">
+  <%= notice %>
 </p>
 
+<div class="d-flex align-items-center mt-5">
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+  <div class="container  regular shadow bg-light">
+
+    <div class="row m-5">
+
+      <div class="col-md-5 me-5">
+        <p>
+          <%= image_tag @product.image,class:"img-fluid img-thumbnail", style:"width: 50vh" %>
+
+        </p>
+        <div class="text-center">
+          <%= button_to 'Add to cart' , line_items_path(product_id: @product), class: 'btn btn-warning w-100' %>
+        </div>
+      </div>
+
+      <div class="col-md-5 ">
+
+        <p class="fs-2 " style="color: #337973;">
+          <%= @product.brand %>
+        </p>
+
+        <p class="fs-4 text-muted">
+          <%= @product.title %>
+        </p>
+
+        <p class="text-success">Special Price</p>
+        <p class="fs-4 h5">
+          <strong>₹</strong>
+          <%= @product.price %>
+        </p>
+
+        <div class="h5">Available offers</div>
+        <div>
+          <em class="bi bi-tag-fill text-success d-flex fs-4 "> &nbsp<p class="text-dark fs-6"> Special Price Get extra
+              10% off (price inclusive of discount)T&C
+            </p> </em>
+          <em class="bi bi-tag-fill text-success d-flex fs-4"> &nbsp<p class="text-dark fs-6"> Bank Offer 5% Cashback on
+              Flipkart Axis Bank CardT&C
+            </p> </em>
+          <em class="bi bi-tag-fill text-success d-flex fs-4"> &nbsp<p class="text-dark fs-6"> Bank Offer 10% off on
+              ICICI Bank Credit Cards, up to ₹300. On orders of ₹1750 and aboveT&C
+            </p> </em>
+          <em class="bi bi-tag-fill text-success d-flex fs-4"> &nbsp<p class="text-dark fs-6">Partner Offer Sign up for
+              Flipkart Pay Later and get Flipkart Gift Card worth upto ₹500*
+            </p> </em>
+        </div>
+
+
+        <div class="row text-center ">
+          <h3>Size</h3>
+          <p class="border me-2 py-2 col ">XS</p>
+          <p class="border me-2 py-2 col ">S</p>
+          <p class="border me-2 py-2 col ">M</p>
+          <p class="border me-2 py-2 col ">L</p>
+          <p class="border me-2 py-2 col ">XL</p>
+          <p class="border me-2 py-2 col ">XXL</p>
+          <p class="border me-2 py-2 col ">3XL</p>
+
+        </div>
+        <p class="text-muted ">None of the accessories displayed in the pictures are shipped with the product and are purely for decorative
+          purposes only. We do not accept exchanges or returns on these items.</p>
+        <p>
+          <hr>
+          <strong>Description:</strong>
+          <%= @product.description %>
+        </p>
 
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+        <% if product_seller(@product) %>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+          <%= link_to 'Edit' , edit_product_path(@product) %>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image,class:"img-fluid w-25" %>
-</p>
-
-<% if product_seller(@product) %>
-
-<%= link_to 'Edit', edit_product_path(@product) %> 
-
-<% end %>
+            <% end %>
 
 
-<%= button_to 'Add to cart', line_items_path(product_id: @product), class:'btn btn-warning w-100' %>
+              <small>Delivery by 7 Aug, Sunday | <small class="text-success">Free</small><small
+                  class="text-decoration-line-through text-muted"> ₹40</small> </small>
 
 
-<%= link_to 'Back', products_path %>
+              <!-- <%= link_to 'Back' , products_path %> -->
+      </div>
+
+    </div>
+  </div>
+
+</div>

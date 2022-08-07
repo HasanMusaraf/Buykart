@@ -38,7 +38,7 @@
 
 <!-- Category selection -->
 
-<div class="container-fluid py-4 px-5">
+<%# <div class="container-fluid py-4 px-5">
   <!-- category first row -->
 
   <div class="row">
@@ -71,7 +71,7 @@
   </div>
 
 
-</div>
+</div> %>
 
 <!-- Feature products -->
 
@@ -130,8 +130,10 @@
 
   </div>
   <br>
+      <% if product_seller(@product) %>
 
   <%= link_to 'New Product' , new_product_path %>
+      <% end %>
 
     </div>
 
