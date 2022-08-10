@@ -1,0 +1,34 @@
+<h1 class="text-center bg-success text-white p-3" style="font-family: poppins;">Favourite</h1>
+
+<div class="container w-50 my-5">
+<div class=" my-5 border bg-white rounded Small shadow ">
+
+<% list_wish = Wish.where(users_id: current_user.id) %>
+<% list_wish.map do |cur_item| %>
+<% cur_product = Product.find(cur_item['products_id']) %>
+
+<div class="row  p-3">
+    <div class="col-lg-1 col-6 me-4">
+        <p><%=  image_tag(cur_product['image'],class:"img-fluid ") %></p>
+        <%= link_to 'View' , product_path(cur_product),class:"btn-sm btn-primary text-decoration-none view" %>
+
+    </div>
+    
+    <div class="col-md-9">
+        <p><%= cur_product['title'] %> <br>
+        <small class=" rounded p-1 bg-success text-white" style="font-size: 12px;">4.2 <i class="bi bi-star-fill "></i></small>
+        </p>
+        <strong class="h5">₹<%= cur_product['price'].to_i %></strong>
+    </div>
+    <div class="col-md-1">
+        <%= link_to "", product_id_url(cur_product),class:"me-2 bi bi-trash text-muted fs-5 " %>
+
+    </div>
+    <hr class="mt-2">
+</div>
+
+<% end %>
+
+</div>
+
+</div>

@@ -1,13 +1,11 @@
-module ApplicationHelper
-    def cart_count_over_one
+# frozen_string_literal: true
 
-        if @cart.line_items.count > 0
-        return "<span class='tag is-dark'>#{@cart.line_items.count}</span>".html_safe
-        end
-    end
-    
-    def cart_has_items
-        
-        return @cart.line_items.count > 0
-    end
+module ApplicationHelper
+  def cart_count_over_one
+    return "<span>#{@cart.line_items.count} </span>".html_safe if @cart.line_items.count.positive?
+  end
+
+  def cart_has_items
+    @cart.line_items.count.positive?
+  end
 end
