@@ -7,6 +7,6 @@ class CreateLineItems < ActiveRecord::Migration[6.1]
       t.belongs_to :cart, foreign_key: true
 
       t.timestamps
-    end
+    end``
   end
 end

@@ -67,6 +67,11 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
   end
 
+  def set_line_iteme
+    @line_item = LineItem.find(params[:id])
+  end
+
+
   # Only allow a list of trusted parameters through.
   def line_item_params
     params.require(:line_item).permit(:product_id)

@@ -4,7 +4,7 @@
 
 <div class="d-flex align-items-center mt-5">
 
-  <div class="container  regular shadow bg-light">
+  <div class="container  regular shadow bg-white">
 
     <div class="row m-5">
 
@@ -13,9 +13,16 @@
           <%= image_tag @product.image,class:"img-fluid img-thumbnail", style:"width: 50vh" %>
 
         </p>
+        <% if add_only_logged %>
         <div class="text-center">
           <%= button_to 'Add to cart' , line_items_path(product_id: @product), class: 'btn btn-warning w-100' %>
         </div>
+        <% else %>
+          <div class="text-center">
+              <%= button_to 'Add to cart' , products_path, class: 'btn btn-warning w-100',:data => {:confirm => 'Are you sure?'}  %>
+          </div>
+
+        <% end %>
       </div>
 
       <div class="col-md-5 ">
@@ -83,6 +90,99 @@
                   class="text-decoration-line-through text-muted"> ₹40</small> </small>
 
 
+
+              <div class="rate-card row my-5">
+                <h2 class="col-12">Rate This Product</h2>
+                <form action="/review"  method="post">
+                  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                  <div class="star1 col-12">
+                    <input type="checkbox" name="review[rating]" value="1" class="star me-4 parent">
+                    <input type="checkbox" name="review[rating]" value="2" class="star me-4 check1">
+                    <input type="checkbox" name="review[rating]" value="3" class="star me-4 check2">
+                    <input type="checkbox" name="review[rating]" value="4" class="star me-4 check3">
+                    <input type="checkbox" name="review[rating]" value="5" class="star check4">
+                </div><br>
+
+                  <input type="text" name="review[comment_box]" class="ps-1 col-12 mt-2 " style="height: 100px; padding-bottom:70px ;" >
+                  <% if add_only_logged %>
+                  <input type="hidden" name="review[user_id]" value="<%= current_user.id %>" >
+                  <% end %>
+                  <input type="hidden" name="review[product_id]" value="<%= @product.id %>">   
+        
+                  <button type="submit" class="btn btn-success mt-3">submit</button>
+  
+                </form>
+  
+              </div>
+
+               <div class="customer-review ">
+                <% current_product = @product.id %>
+                <% @review = Review.where(product_id: current_product)  %>
+                <h5 class=" text-center text-muted"> <%= @review.count %> customer ratings</h5>
+                <div class="row my-5">
+                 <% rate1 = @review.where(rating: 1).count %>
+                 <% rate2 = @review.where(rating: 2).count %>
+                 <% rate3 = @review.where(rating: 3).count %>
+                 <% rate4 = @review.where(rating: 4).count %>
+                 <% rate5 = @review.where(rating: 5).count %> 
+
+                 <% if @review.count > 0 %>
+                 <% rating1 = 100/(@review.count)*rate1 %>
+                 <% rating2 = 100/(@review.count)*rate2 %>
+                 <% rating3 = 100/(@review.count)*rate3 %>
+                 <% rating4 = 100/(@review.count)*rate4 %>
+                 <% rating5 = 100/(@review.count)*rate5 %>
+                 <% end %>
+
+                 <div class="col ">
+                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">5 Star</small><div class="bar " style="width: <%= rating5 %>%; height: 25px; background-color: #04AA6D;"></div></div>
+                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">4 Star</small><div class="bar " style="width: <%= rating4 %>%; height: 25px; background-color: #2196F3;"></div></div>
+                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">3 Star</small><div class="bar " style="width: <%= rating3 %>%; height: 25px; background-color: #00bcd4;"></div></div>
+                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">2 Star</small><div class="bar " style="width: <%= rating2 %>%; height: 25px; background-color: #ff9800;"></div></div>
+                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">1 Star</small><div class="bar " style="width: <%= rating1 %>%; height: 25px; background-color: #f44336;"></div></div>
+                 </div>
+ 
+                 <div class="col-1 quantity row g-1 text-muted">
+                  <small class="fs-5"><%= rate5 %></small>
+                  <small class="fs-5"><%= rate4 %></small>
+                  <small class="fs-5"><%= rate3 %></small>
+                  <small class="fs-5"><%= rate2 %></small>
+                  <small class="fs-5"><%= rate1 %></small>
+
+                 </div>
+
+                </div>
+                
+                <div class="mt-5">
+                  <% if @review.count > 0 %>
+
+                  <% @review.each do |review| %>
+                  <% review_user = review.user_id %> 
+                  <% from_user = User.where(id: review_user) %>
+                  <% from_user.each do |get_user| %>
+                    <small class="fs-5 text-muted"><%= get_user.name %></small> <br>
+                  <% end %>
+
+                  <%  review.rating.times do  %>
+                    <em class="bi bi-star-fill text-warning "></em> 
+                  <% end %>
+     
+                  <small class="text-muted"><%= review.comment_box%></small> <br>
+<hr>
+                  <% end %>
+                  <% else %>
+                  <h2 class="text-center">No reviews</h2>
+                  <% end %>
+                 </div>
+
+                </div>
+
+
+
+
+
+
+
               <!-- <%= link_to 'Back' , products_path %> -->
       </div>
 
@@ -90,4 +190,87 @@
   </div>
 
 </div>
+
+
+
+
+
+
+
+  <script>
+
+
+    $(document).ready(function(){
+ $('.star1').on( "change", "input[type=checkbox]", function(e) {
+  if ($(this).hasClass("parent")) { 
+    if ($('.parent').prop("checked")) {
+      $('.parent').prop("checked", true);
+
+    }else
+    {
+      $('.parent').prop("checked", true);
+      $('.check1').prop("checked", false);
+      $('.check2').prop("checked", false);
+      $('.check3').prop("checked", false);
+      $('.check4').prop("checked", false);
+
+    }
+  } else if ($(this).hasClass("check1")) { 
+    if ($('.check1').prop("checked")) {
+      $('.parent').prop("checked", true);
+
+    }else
+    {
+      $('.check1').prop("checked", true);
+      $('.check3').prop("checked", false);
+      $('.check2').prop("checked", false);
+      $('.check4').prop("checked", false);
+
+    }
+  } else if ($(this).hasClass("check2")) { 
+    if ($('.check2').prop("checked")) {
+      $('.parent').prop("checked", true);
+      $('.check1').prop("checked", true);
+
+    }else
+    {
+      $('.check2').prop("checked", true);
+      $('.check3').prop("checked", false);
+      $('.check4').prop("checked", false);
+
+    }
+  } else if ($(this).hasClass("check3")) { 
+    if ($('.check3').prop("checked")) {
+      $('.parent').prop("checked", true);
+      $('.check1').prop("checked", true);
+      $('.check2').prop("checked", true);
+
+    }else
+    {
+      $('.check3').prop("checked", true);
+      $('.check4').prop("checked", false);
+
+    }
+  } else if ($(this).hasClass("check4")) { 
+    if ($('.check4').prop("checked")) {
+      $('.parent').prop("checked", true);
+      $('.check1').prop("checked", true);
+      $('.check2').prop("checked", true);
+      $('.check3').prop("checked", true);
+
+
+    }else
+    {
+      $('.check4').prop("checked", true);
+
+    }
+  }
+
+});
+});
+
+
+  </script>
+
+
 

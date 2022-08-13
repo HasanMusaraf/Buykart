@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all.order('created_at desc')
-    @items = Wish.where(user_id: current_user.id)
+    # @items = Wish.where(user_id: current_user.id)
   end
 
   # GET /products/1 or /products/1.json
@@ -49,6 +49,17 @@ class ProductsController < ApplicationController
 
   def search
     @products1 = Product.where('title Like ?', "%#{params[:q]}%")
+  end
+
+  def review
+
+    @review = Review.new(review_params)
+    if @review.save
+      redirect_to root_path, notice: 'Thanks for Your Review'
+    else
+      redirect_to product_path, notice: 'Sorry Your Review was not Created'
+    end
+
   end
 
   # POST /products or /products.json
@@ -104,4 +115,9 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:brand, :description, :title, :price, :image)
   end
+
+  def review_params
+    params.require(:review).permit(:comment_box, :product_id, :user_id, :rating)
+  end
+
 end

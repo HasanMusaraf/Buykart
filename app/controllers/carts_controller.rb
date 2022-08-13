@@ -10,7 +10,10 @@ class CartsController < ApplicationController
   end
 
   # GET /carts/1 or /carts/1.json
-  def show; end
+  def show
+  @mus = LineItem.all
+  
+  end
 
   # GET /carts/new
   def new

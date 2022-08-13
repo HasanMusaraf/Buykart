@@ -85,34 +85,30 @@
 
 
 <div class="container-fluid">
-  <!-- <p id="notice">
-    <%= notice %>
-  </p> -->
 
-  <div class="row py-2 justify-content-center gap-5">
+  <div class="row py-2 justify-content-center gap-2 ">
     <% @products.each do |product| %>
 
-      <div class="card col-lg-2 text-white Regular shadow">
+      <div class="card col-lg-2 text-white Regular shadow ">
         <%= image_tag product.image,class:"img-fluid img-thumbnail pt-2 border-0 " %>
         <div class=" card-img-overlay ">
           <div class=" card-text pb-4">
-          <!-- <%= link_to '' , product,class:"btn-sm btn-success me-2 bi bi-heart-fill fav" %> -->
           <a href="/wish_item/<%= product['id'] %>" class="btn-sm btn-success me-2 bi bi-heart-fill fav"></a>
           
             <%= link_to 'View' , product,class:"btn-sm btn-primary text-decoration-none view" %>
 
-      </div>
+        </div>
 
 
-      <% if product_seller(product) %>
+        <% if product_seller(product) %>
 
         <div class="card-text pb-4 align-baseline">
           <%= link_to 'Edit' , edit_product_path(product), class:"btn-sm btn-warning text-decoration-none text-white" %>
         </div>
         <%= button_to 'Delete' , product, method: :delete, class:" btn-sm btn-danger align-baseline", data: {
           confirm: 'Are you sure?' } %>
-      <% end %>
-  </div>
+       <% end %>
+      </div>
   <div class="card-body">
     <p class="card-text text-muted" style="color:black;">
       <%= product.brand %>
@@ -121,7 +117,7 @@
       <%= product.title %>
     </p>
     <p class="card-text " style="color:black;">
-      <%= product.price %>
+      ₹<%= product.price.to_i %>
     </p>
   </div>
 
