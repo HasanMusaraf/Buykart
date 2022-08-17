@@ -1,8 +1,7 @@
+# frozen_string_literal: true
 
 Rails.application.routes.draw do
   get 'search', to: 'products#search'
-  resources :line_items
-  resources :carts
   resources :products
   devise_for :users, controllers: {
     registrations: 'registrations'
@@ -11,4 +10,9 @@ Rails.application.routes.draw do
   get 'wish_item/:product_id', to: 'products#wish_list', as: :product_id
   post 'review', to: 'products#review'
   root 'products#index'
+  get 'pay', to: 'store#cash'
+  get 'line', to: 'line_items#line_item'
+  post 'cart', to: 'products#cart'
+  get 'carts', to: 'products#carts'
+  get 'del', to: 'products#del'
 end

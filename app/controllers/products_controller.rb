@@ -40,11 +40,6 @@ class ProductsController < ApplicationController
       end
 
     end
-
-    # wish_id = params[:product_id]
-    # wish_record = Wish.create!(
-
-    # )
   end
 
   def search
@@ -52,15 +47,38 @@ class ProductsController < ApplicationController
   end
 
   def review
-
     @review = Review.new(review_params)
     if @review.save
       redirect_to root_path, notice: 'Thanks for Your Review'
     else
       redirect_to product_path, notice: 'Sorry Your Review was not Created'
     end
-
   end
+
+  def cart
+    @cart = Cart.find_by(product_id: params[:cart][:product_id], user_id: current_user.id)
+    if @cart
+      @cart.increment(:quantity)
+      @cart.save
+      redirect_to root_path
+
+    else
+      @cart = Cart.new(cart_params)
+      if @cart.save
+        redirect_to root_path
+      else
+        render plain: 'failed'
+      end
+    end
+  end
+
+  def del
+    from_cart = Cart.find_by(product_id: params[:product_id], user_id: current_user.id)
+    from_cart.destroy
+    redirect_to carts_path
+  end
+
+  def carts; end
 
   # POST /products or /products.json
   def create
@@ -120,4 +138,7 @@ class ProductsController < ApplicationController
     params.require(:review).permit(:comment_box, :product_id, :user_id, :rating)
   end
 
+  def cart_params
+    params.require(:cart).permit(:product_id, :user_id)
+  end
 end

@@ -1,12 +1,15 @@
 <h1 class="text-center bg-success text-white p-3" style="font-family: poppins;">Favourite</h1>
 
-<div class="container  my-5">
+<% list = Wish.where(users_id: current_user.id) %>
+
+<% if list.count > 0 %>
+
+<div class="container my-5" style="min-height: 400px;">
 <div class=" my-5 border bg-white rounded Small shadow ">
 
 <% list_wish = Wish.where(users_id: current_user.id) %>
 <% list_wish.map do |cur_item| %>
 <% cur_product = Product.find(cur_item['products_id']) %>
-
 <div class="row  p-3">
     <div class="col-lg-1  me-4">
         <p><%=  image_tag(cur_product['image'],class:"img-fluid ") %></p>
@@ -26,9 +29,14 @@
     </div>
     <hr class="mt-2">
 </div>
+<% end %>
 
+</div>
+<% else %>
+<div style="min-height: 400px;" class="d-flex justify-content-center align-items-center">
+<h1 class=" text-muted my-5">NO Items in Wishlist</h1>
+</div>
 <% end %>
 
 </div>
 
-</div>

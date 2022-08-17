@@ -1,6 +1,8 @@
-<div class="container my-5">
+<div class="container my-5" style="min-height: 500px;">
 
 <h1 class="text-center my-5">Search Results</h1>
+
+<% if @products1.count > 0 %>
 
 <div class="row py-2 justify-content-center gap-5">
     <% @products1.each do |product| %>
@@ -35,6 +37,13 @@
 
   </div>
   <br>
+<% else %>
+<div class="text-center my-5">
+  <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/error-no-search-results_2353c5.png" alt="Product not available" class="img-fluid w-25">
+  <h3>Sorry, no results found!</h3>
+   <h5 class="text-muted">Please check the spelling or try searching for something else</h5>
+</div>
+<% end %>
 
 </div>
 

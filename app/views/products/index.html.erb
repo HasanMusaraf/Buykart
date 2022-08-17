@@ -84,13 +84,13 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid ">
 
-  <div class="row py-2 justify-content-center gap-2 ">
+  <div class="row py-2 justify-content-center  gap-2 ">
     <% @products.each do |product| %>
 
-      <div class="card col-lg-2 text-white Regular shadow ">
-        <%= image_tag product.image,class:"img-fluid img-thumbnail pt-2 border-0 " %>
+      <div class="card col-lg-2 text-white  more " >
+        <%= image_tag product.image,class:"img-fluid img-thumbnail  pt-2 border-0 " %>
         <div class=" card-img-overlay ">
           <div class=" card-text pb-4">
           <a href="/wish_item/<%= product['id'] %>" class="btn-sm btn-success me-2 bi bi-heart-fill fav"></a>
@@ -124,13 +124,27 @@
 
 </div>
 <% end %>
-
   </div>
+
   <br>
+</div>
+
       <% if product_seller(@product) %>
 
   <%= link_to 'New Product' , new_product_path %>
       <% end %>
 
-    </div>
+<div class="text-center d-flex justify-content-center ">
+    <button class="bttn btn btn-secondary  ">Load more</button>
+  </div>
 
+<script>
+  $(".more").hide();
+  $(".more").slice(0,15).show();
+  $(".bttn").on("click",()=> {
+  $(".more:hidden").slice(0,10).slideDown()
+  if($(".more:hidden").length == 0 ){
+    $(".bttn").fadeOut()
+  }
+  })
+</script>

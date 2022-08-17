@@ -2,10 +2,14 @@
 
 module ApplicationHelper
   def cart_count_over_one
-    return "<span>#{@cart.line_items.count} </span>".html_safe if @cart.line_items.count.positive?
+    @has_cart = Cart.where(user_id: current_user)
+
+    "<span>#{@has_cart.count} </span>".html_safe
   end
 
-  def cart_has_items
-    @cart.line_items.count.positive?
+  def cart_count
+    @has_cart = Cart.where(user_id: current_user)
+
+    @has_cart.count
   end
 end

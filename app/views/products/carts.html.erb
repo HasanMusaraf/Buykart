@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<% if cart_count > 0 %>
+
+<div class="container my-5" style="min-height: 500px;">
+
+<div class="row ">
+
+  <div class="col-lg-7 border me-md-3 mx-1 bg-white regular shadow helo ">
+    <div class=" pt-3 ">
+      <%= link_to 'Keep Shopping', products_path, class: 'btn btn-warning' %>
+    </div>
+    <hr />
+     <% line = Cart.where(user_id: current_user.id) %>
+     <% line.each do |lines| %>
+
+     <% get_product = lines.product_id %>
+     <% from_product = Product.where(id: get_product) %>
+       <% from_product.each do |product|  %>
+
+<div class="row">
+  <div class="col-md-3">
+    <figure >
+      <%= image_tag(product.image,class:"col-lg-7 col-4 img-fluid   ") %>
+    </figure>
+  </div>
+  <div class="col-md">
+    <strong><%= product.title %></strong><br>
+    <small class="text-muted">XS</small>
+    <small class="text-dark">Seller : Hasan</small>
+
+    <div>
+      <div>
+        <%= product.brand %>
+      </div>
+      <% @product_price = product.price %>
+      <div >
+        <% @total_quantity =  lines.quantity %>
+        <strong class="f4"><%= "Rs: #{(@total_quantity * @product_price)}" %></strong>
+      </div>
+      <div class="row">
+        <p class="col-lg-5 fs-5">Quantity:</p>
+           <p class="col-lg-2  border text-center py-1"><%= lines.quantity %></p>
+      </div>
+    
+    </div>
+  </div><br>
+
+
+
+
+  <div class="col-md">
+    <small>Delivery by 7 Aug, Sunday | <small class="text-success">Free</small><small
+    class="text-decoration-line-through text-muted"> ₹40</small> </small>
+
+
+  </div>
+</div>
+  <%= link_to 'Remove Item', del_path(product_id: product), method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-danger mt-2" %>
+
+
+<hr >
+    
+ 
+      <% end %>
+
+
+<% end %>
+
+<div class="row">
+    <div class="col">
+      <%= link_to 'Place Order', pay_path, class:"btn btn-success w-100 mb-2" %>
+    </div>
+  </div>
+
+
+</div>
+
+
+  <% @total_price = 0 %>
+
+<% line1 = Cart.where(user_id: current_user.id) %>
+<% line1.each do |lines| %>
+
+<% get_product1 = lines.product_id %>
+<% @get_quantity = lines.quantity %>
+
+
+<% from_product1 = Product.where(id: get_product1) %>
+  <% from_product1.each do |sub_product|  %>
+  <%  @final_product_price = sub_product.price.to_i %>
+  <% @quantity_price = @final_product_price * @get_quantity %>
+  <%  @total_price = @total_price + @quantity_price %>
+  <% end %>
+  <% end %>
+
+
+
+<div class="col-lg-3 border mt-lg-0 mt-3 mx-1 h-50 bg-white regular shadow ">
+
+    <p class="text-muted fs-5 my-3 ms-3">PRICE DETAILS </p>
+    <hr>
+<div class="row">
+     <div class="col-8 ms-2">
+       <p>Price (<%= cart_count %> items)</p>
+       <p>Discount(10%) </p>
+       <p class="">Delivery Charges</p>
+     </div>
+     <div class="col">
+
+    
+       <p><%= "₹ #{( @total_price )}" %></p>
+
+
+       <p class="text-success ms-2"> <%= "₹#{(@total_price) * 10/100}" %>  </p>
+       <p class="ms-3">₹40</p>
+     </div>
+   <hr class="text-muted">
+    
+   <div class="row mb-1">
+     <div class="col-8">
+       <p class="h5">Total Amount</p>
+     </div>
+     <div class="col">
+       <p class="h5 ms-3"><%= "₹#{(@total_price)-((@total_price) * 10/100)+40}" %></p>
+     </div>
+     <hr class="text-muted">
+ </div>
+ <p class="text-success">You will save <%= "₹#{(@total_price) - ((@total_price)-((@total_price) * 10/100)+40)}" %> on this order</p>
+</div>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<% else %>
+
+<div class="text-center my-2 bg-white container small shadow" style="min-height: 500px;">
+  <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="Product not available" class="img-fluid w-25 mt-5">
+  <h3 class="my-3">Your cart is empty!</h3>
+   <h5 class="text-muted">Explore our wide selection and find something you like</h5>
+</div>
+
+<% end %>
+

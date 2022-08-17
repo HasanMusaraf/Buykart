@@ -2,9 +2,9 @@
   <%= notice %>
 </p>
 
-<div class="d-flex align-items-center mt-5">
+<div class="d-flex align-items-center ">
 
-  <div class="container  regular shadow bg-white">
+  <div class="container   bg-white">
 
     <div class="row m-5">
 
@@ -15,7 +15,14 @@
         </p>
         <% if add_only_logged %>
         <div class="text-center">
-          <%= button_to 'Add to cart' , line_items_path(product_id: @product), class: 'btn btn-warning w-100' %>
+
+           <form action="/cart" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+            <input type="hidden" name="cart[product_id]" value="<%= @product.id %>">
+            <input type="hidden" name="cart[user_id]" value="<%= current_user.id %>">
+            <button type="submit" class="btn btn-warning w-100">Add to cart</button>
+           </form>
         </div>
         <% else %>
           <div class="text-center">
@@ -135,11 +142,11 @@
                  <% end %>
 
                  <div class="col ">
-                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">5 Star</small><div class="bar " style="width: <%= rating5 %>%; height: 25px; background-color: #04AA6D;"></div></div>
-                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">4 Star</small><div class="bar " style="width: <%= rating4 %>%; height: 25px; background-color: #2196F3;"></div></div>
-                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">3 Star</small><div class="bar " style="width: <%= rating3 %>%; height: 25px; background-color: #00bcd4;"></div></div>
-                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">2 Star</small><div class="bar " style="width: <%= rating2 %>%; height: 25px; background-color: #ff9800;"></div></div>
-                  <div class="mb-2 bg-secondary d-flex" style="width: 100%;"><small class="px-2 pt-1 text-muted bg-white">1 Star</small><div class="bar " style="width: <%= rating1 %>%; height: 25px; background-color: #f44336;"></div></div>
+                  <div class="mb-2  d-flex" style="width: 100%; background-color: #f3f3f3;"><small class="px-2 pt-1 text-muted bg-white">5 Star</small><div class="bar" style="width: <%= rating5 %>%; height: 25px; background-color: #04AA6D;"></div></div>
+                  <div class="mb-2  d-flex" style="width: 100%; background-color: #f3f3f3;"><small class="px-2 pt-1 text-muted bg-white">4 Star</small><div class="bar" style="width: <%= rating4 %>%; height: 25px; background-color: #2196F3;"></div></div>
+                  <div class="mb-2  d-flex" style="width: 100%; background-color: #f3f3f3;"><small class="px-2 pt-1 text-muted bg-white">3 Star</small><div class="bar" style="width: <%= rating3 %>%; height: 25px; background-color: #00bcd4;"></div></div>
+                  <div class="mb-2  d-flex" style="width: 100%; background-color: #f3f3f3;"><small class="px-2 pt-1 text-muted bg-white">2 Star</small><div class="bar" style="width: <%= rating2 %>%; height: 25px; background-color: #ff9800;"></div></div>
+                  <div class="mb-2  d-flex" style="width: 100%; background-color: #f3f3f3;"><small class="px-2 pt-1 text-muted bg-white">1 Star</small><div class="bar" style="width: <%= rating1 %>%; height: 25px; background-color: #f44336;"></div></div>
                  </div>
  
                  <div class="col-1 quantity row g-1 text-muted">
@@ -171,7 +178,7 @@
 <hr>
                   <% end %>
                   <% else %>
-                  <h2 class="text-center">No reviews</h2>
+                  <h2 class="text-center text-muted">No reviews</h2>
                   <% end %>
                  </div>
 

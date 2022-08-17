@@ -3,7 +3,7 @@
 class Product < ApplicationRecord
   before_destroy :not_referenced_by_any_line_item
   belongs_to :user, optional: true
-  has_many :line_items
+  has_many :carts
 
   validates :title, :brand, :price, presence: true
   validates :description, length: { maximum: 1000, too_long: '%<count>s characters is the maximum allowed. ' }

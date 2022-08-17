@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+ 
+  <% @total_price = 0 %>
+
+<% line1 = Cart.where(user_id: current_user.id) %>
+<% line1.each do |lines| %>
+
+<% get_product1 = lines.product_id %>
+<% @get_quantity = lines.quantity %>
+
+
+<% from_product1 = Product.where(id: get_product1) %>
+  <% from_product1.each do |sub_product|  %>
+  <%  @final_product_price = sub_product.price.to_i %>
+  <% @quantity_price = @final_product_price * @get_quantity %>
+  <%  @total_price = @total_price + @quantity_price %>
+  <% end %>
+  <% end %>
+
+
+<div class="container " style="min-height: 550px;">
+
+    <div class="row my-3">
+
+        <div class="col-lg-7  border me-md-3 mx-1 regular shadow " style="background-color: #f5faff;">
+            <form action="" method="post" class="">
+
+           <div class="row">
+            <h5 class="mb-2 col-md-12 p-3 bg-primary w-100 text-white">DELIVERY ADDRESS</h5>
+
+            <details>
+                <summary class="text-primary">ADD ADDRESS</summary>
+                <div class="ms-5">
+                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded my-3 me-3" placeholder="Name" style="min-height: 50px;">
+                <input type="number" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="10-digit mobile number" style="min-height: 50px;">
+                <input type="number" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Pincode" style="min-height: 50px;">
+                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Locality" style="min-height: 50px;">
+                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="City/District/Town" style="min-height: 50px;">
+                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="State" style="min-height: 50px;">
+               <textarea name="" id="" rows="4" placeholder="Address (Area and Street)" class="col-md-9 col-10 border border-muted border-2 ps-2 rounded text col-8 " ></textarea>  
+            </div>
+            </details>
+           </div>
+
+           <hr class="text-muted">
+           <div class="row container ms-md-5 ms-0 my-5">
+             <h4 class="col-12 car ms-4">&nbsp&nbspCard Number</h4>
+             <i class="bi bi-credit-card-2-back fs-3 col-md-1 col-2 ms-5 border border-muted border-2" ></i>
+             <input type="number" name="" id="" class="col-7 w-50 text border border-muted border-2" placeholder="XXXXXXXXXXXX4151" style="min-height: 45px;">
+            
+            <div class="row ms-4 my-3">
+                <div class="col-md-3 my-md-0 my-3">
+                    <h5 class="car1">Expiry Date</h5>
+                    <input type="number" name="" id="" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="01/24" style="min-height: 40px;">
+                </div>
+                <div class="col-md-3 me-5">
+                    <h5 class="car1">CVV</h5>
+                    <input type="number" name="" id="" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="333" style="min-height: 40px;">
+                </div>
+                <div class="col-md-12  mt-3">
+                    <h5 class="car1">Card Holder Name</h5>
+                    <input type="text" class=" ps-2 border border-muted  border-2 text  rounded my-1 me-3" placeholder="Name" style="min-height: 45px;">
+
+                </div>
+
+            </div>
+            
+            <button class="btn col-7 mx-5 text-white" style="background-color: orange;">Continue</button>
+
+            </div>
+
+        </form>
+
+        </div>
+
+        <div class="col-lg-3 border mt-lg-0 mt-3 mx-1 h-50 bg-white regular shadow ">
+
+
+            <p class="text-muted fs-5 my-3 ms-3">PRICE DETAILS </p>
+            <hr>
+        <div class="row">
+             <div class="col-8 ms-2">
+               <p>Price (<%= cart_count %> items)</p>
+               <p class="">Delivery Charges</p>
+             </div>
+             <div class="col">
+        
+            
+               <p>&nbsp<%= "₹ #{( @total_price )}" %></p>
+        
+        
+               <p class="ms-3">₹40</p>
+             </div>
+           <hr class="text-muted">
+            
+           <div class="row mb-1">
+             <div class="col-8">
+               <p class="h5">Total Payable</p>
+             </div>
+             <div class="col">
+               <p class="h5 ms-3"><%= "₹#{(@total_price)-((@total_price) * 10/100)+40}" %></p>
+             </div>
+             <hr class="text-muted">
+             <p class="text-success discount">You will save <%= "₹#{(@total_price) - ((@total_price)-((@total_price) * 10/100)+40)}" %> on this order</p>
+
+    
+        </div>
+
+    </div>
+
+
+
+
+</div>
+</div>
+</div>
