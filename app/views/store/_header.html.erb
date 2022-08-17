@@ -31,20 +31,20 @@
   
                     <ul class="navbar-nav mx-auto mt-3 mb-lg-0 gap-4" >
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active nav-text" aria-current="page" href="/">Home</a>
                       </li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Fashion
                         </a>
                         <ul class="dropdown-menu ">
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="men" name="q" class="border-0 bg-white w-100">Mens</button></form></a></li>
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="boy" name="q" class="border-0 bg-white w-100">Boys</button></form></a></li>
+                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="men" name="q" class="border-0 bg-white text-dark w-100">Mens</button></form></a></li>
+                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="boy" name="q" class="border-0 bg-white text-dark w-100">Boys</button></form></a></li>
 
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="girl" name="q" class="border-0 bg-white w-100">Girls</button></form></a></li>
+                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="girl" name="q" class="border-0 bg-white text-dark w-100">Girls</button></form></a></li>
                           
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="lady" name="q" class="border-0 bg-white w-100">Womens</button></form></a></li>
+                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="lady" name="q" class="border-0 bg-white text-dark w-100">Womens</button></form></a></li>
                         </ul>
                       </li>
                       <li class="heart nav-item"><a href="/wish_list" class="nav-link "> Favourite</a></li>
@@ -61,9 +61,9 @@
                                         <%= link_to (current_user.name), edit_user_registration_path,
                                             class:"align-items-center pt-2 pe-4 me-2 text-decoration-none text-muted text-capitalize" %>
                                            
-                                    <%= link_to carts_path, class:"navbar-item text-decoration-none text-muted" do %><em
+                                    <%= link_to carts_path, class:"navbar-item text-decoration-none text-muted " do %><em
                                                 class="bi bi-cart3 kart"></em> 
-                                        <span class="cart">cart <%= cart_count_over_one %></span><% end %> 
+                                        <span class="cart"><small class=" rounded-circle px-1 bg-success text-white"><%= cart_count_over_one %></small></span><% end %> 
                         
                                             <%= button_to "Log Out" , destroy_user_session_path, method:
                                                 :delete, class:"navbar-item btn btn-danger mx-5" %>
