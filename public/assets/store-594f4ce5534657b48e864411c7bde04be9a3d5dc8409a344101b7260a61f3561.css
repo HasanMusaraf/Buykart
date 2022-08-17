@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&family=Roboto:wght@100;300&display=swap");
+/* line 6, app/assets/stylesheets/store.scss */
+.kart {
+  font-size: 25px;
+}
+
+/* line 9, app/assets/stylesheets/store.scss */
+.wish {
+  font-size: 25px;
+  color: red;
+}
+
+/* line 14, app/assets/stylesheets/store.scss */
+.heart span {
+  font-size: 15px;
+  color: black;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* line 25, app/assets/stylesheets/store.scss */
+.heart:hover span {
+  color: black;
+  top: 120px;
+  opacity: 1;
+  pointer-events: auto;
+  color: white;
+}
+
+/* line 35, app/assets/stylesheets/store.scss */
+.card-text .fav {
+  font-size: larger;
+}
+
+/* line 39, app/assets/stylesheets/store.scss */
+.card-text .view {
+  font-family: sans-serif;
+  font-size: larger;
+}
+
+/* line 45, app/assets/stylesheets/store.scss */
+.text {
+  outline-color: blue;
+}
+
+/* line 50, app/assets/stylesheets/store.scss */
+summary {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Roboto,Arial, Helvetica, sans-serif;
+}
+
+/* line 57, app/assets/stylesheets/store.scss */
+.car {
+  font-weight: bold;
+  font-size: 18.7px;
+}
+
+/* line 62, app/assets/stylesheets/store.scss */
+.car1 {
+  font-weight: bold;
+  font-size: 15.7px;
+}

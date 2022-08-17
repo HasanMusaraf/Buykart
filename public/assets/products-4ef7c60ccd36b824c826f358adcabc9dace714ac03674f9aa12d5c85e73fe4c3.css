@@ -1,0 +1,32 @@
+/* line 6, app/assets/stylesheets/products.scss */
+* {
+  font-family: Roboto,Arial,sans-serif;
+}
+
+/* line 11, app/assets/stylesheets/products.scss */
+.star {
+  visibility: hidden;
+  font-size: 33px;
+  cursor: pointer;
+  color: orange;
+  margin-right: 5px;
+}
+
+/* line 18, app/assets/stylesheets/products.scss */
+.star:before {
+  content: "\2606";
+  visibility: visible;
+  color: gray;
+}
+
+/* line 23, app/assets/stylesheets/products.scss */
+.star:checked:before {
+  content: "\2605";
+  color: orange;
+}
+
+/* line 29, app/assets/stylesheets/products.scss */
+.quantity {
+  position: relative;
+  bottom: 12px;
+}
