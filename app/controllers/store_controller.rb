@@ -2,4 +2,8 @@
 
 class StoreController < ApplicationController
   def index; end
+
+  def cash
+    # render plain: "success"
+  end
 end

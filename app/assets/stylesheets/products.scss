@@ -4,6 +4,30 @@
 
 
  *{
-    font-family: Roboto,Arial,sans-serif; }
+    font-family: Roboto,Arial,sans-serif; 
+   
+  }
 
+  .star {
+    visibility:hidden;
+    font-size:33px;
+    cursor:pointer;
+    color: orange;
+    margin-right: 5px;
+}
+.star:before {
+    content: "\2606";
+   visibility:visible;
+   color: gray;
+}
+.star:checked:before {
+   content: "\2605";
+   color: orange;
+
+}
+
+.quantity{
+  position: relative;
+  bottom: 12px;
+}
 

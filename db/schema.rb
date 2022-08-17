@@ -12,20 +12,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_808_052_453) do
+ActiveRecord::Schema.define(version: 20_220_815_114_506) do
   create_table 'carts', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-  end
-
-  create_table 'line_items', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.bigint 'product_id'
-    t.bigint 'cart_id'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'user_id', null: false
+    t.bigint 'product_id', null: false
     t.integer 'quantity', default: 1
-    t.index ['cart_id'], name: 'index_line_items_on_cart_id'
-    t.index ['product_id'], name: 'index_line_items_on_product_id'
+    t.index ['product_id'], name: 'index_carts_on_product_id'
+    t.index ['user_id'], name: 'index_carts_on_user_id'
   end
 
   create_table 'products', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
@@ -39,6 +34,17 @@ ActiveRecord::Schema.define(version: 20_220_808_052_453) do
     t.integer 'user_id'
   end
 
+  create_table 'reviews', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.string 'comment_box'
+    t.bigint 'user_id', null: false
+    t.bigint 'product_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'rating'
+    t.index ['product_id'], name: 'index_reviews_on_product_id'
+    t.index ['user_id'], name: 'index_reviews_on_user_id'
+  end
+
   create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -48,6 +54,7 @@ ActiveRecord::Schema.define(version: 20_220_808_052_453) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.string 'name'
+    t.boolean 'admin', default: false
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
@@ -61,8 +68,10 @@ ActiveRecord::Schema.define(version: 20_220_808_052_453) do
     t.index ['users_id'], name: 'index_wishes_on_users_id'
   end
 
-  add_foreign_key 'line_items', 'carts'
-  add_foreign_key 'line_items', 'products'
+  add_foreign_key 'carts', 'products'
+  add_foreign_key 'carts', 'users'
+  add_foreign_key 'reviews', 'products'
+  add_foreign_key 'reviews', 'users'
   add_foreign_key 'wishes', 'products', column: 'products_id'
   add_foreign_key 'wishes', 'users', column: 'users_id'
 end
