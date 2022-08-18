@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<h1 class="bg-success text-center text-white py-4 nav-text" >User Orders</h1>
+
+<div class="container-fluid " >
+    <div class="row" style="min-height: 500px;">
+
+        <div class="col-md col bg-white ">
+            <div class="row p-3 border">
+                <!-- <div class="col-md-2">
+                    <h5>Name</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>Product Title</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>Quantity</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>Total Price</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>Phone No</h5>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Address</h5>
+                </div>
+
+<hr>  -->
+
+                <div class="row p-3">
+                    <% Payment.all.each do |payment| %>
+
+                    <div class="col-md">
+                        <small><strong> Name:</strong> <%= payment.name %></small>
+                    </div>
+                    <div class="col-md my-sm-0 my-2">
+                        <small><strong> Title:</strong> <%= payment.product_title %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Quantity:</strong> <%= payment.number_of_items %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Total:</strong> <%= payment.total_price %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Number:</strong> <%= payment.number %></small>
+                    </div>
+
+                    <div class="col-md">
+                        <small><strong> State:</strong> <%= payment.state %></small>
+                    </div>
+
+                    <div class="col-md">
+                        <small><strong> City:</strong> <%= payment.city %></small>
+                    </div>
+
+                    <div class="col-md">
+                        <small><strong> Address:</strong> <%= payment.address %></small>
+                    </div>
+                    
+                    <div class="col-md">
+                        <small><strong> Pincode:</strong> <%= payment.pincode %></small>
+                    </div>
+
+    <hr>
+                    <% end %>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

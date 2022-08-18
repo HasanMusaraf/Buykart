@@ -1,6 +1,7 @@
  <!DOCTYPE html>
  
   <% @total_price = 0 %>
+<% @product_title = "" %> 
 
 <% line1 = Cart.where(user_id: current_user.id) %>
 <% line1.each do |lines| %>
@@ -14,16 +15,20 @@
   <%  @final_product_price = sub_product.price.to_i %>
   <% @quantity_price = @final_product_price * @get_quantity %>
   <%  @total_price = @total_price + @quantity_price %>
+  <% product_title = "#{sub_product.title} , " %>
+  <% @product_title = product_title + @product_title %>
+
   <% end %>
   <% end %>
 
+<% @product_title %>
 
 <div class="container " style="min-height: 550px;">
 
     <div class="row my-3">
 
         <div class="col-lg-7  border me-md-3 mx-1 regular shadow " style="background-color: #f5faff;">
-            <form action="" method="post" class="">
+            <form action="/payment" method="post" >
 
            <div class="row">
             <h5 class="mb-2 col-md-12 p-3 bg-primary w-100 text-white">DELIVERY ADDRESS</h5>
@@ -31,13 +36,19 @@
             <details>
                 <summary class="text-primary">ADD ADDRESS</summary>
                 <div class="ms-5">
-                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded my-3 me-3" placeholder="Name" style="min-height: 50px;">
-                <input type="number" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="10-digit mobile number" style="min-height: 50px;">
-                <input type="number" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Pincode" style="min-height: 50px;">
-                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Locality" style="min-height: 50px;">
-                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="City/District/Town" style="min-height: 50px;">
-                <input type="text" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="State" style="min-height: 50px;">
-               <textarea name="" id="" rows="4" placeholder="Address (Area and Street)" class="col-md-9 col-10 border border-muted border-2 ps-2 rounded text col-8 " ></textarea>  
+                  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+                <input type="text" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[name]" value="<%= current_user.name %>" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded my-3 me-3" placeholder="Name" style="min-height: 50px;">
+                <input type="number" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[number]" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="10-digit mobile number" style="min-height: 50px;">
+                <input type="number" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[pincode]" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Pincode" style="min-height: 50px;">
+                <input type="text" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[locality]" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="Locality" style="min-height: 50px;">
+                <input type="text" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[city]" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="City/District/Town" style="min-height: 50px;">
+                <input type="text" required pattern=".*\S+.*" title="Search field cannot be Blank" name="pay[state]" class="col-md-4 col-10 ps-2 border border-muted border-2 text rounded mb-3 me-3" placeholder="State" style="min-height: 50px;">
+               <textarea name="pay[address]" required pattern=".*\S+.*" title="Search field cannot be Blank"  rows="4" placeholder="Address (Area and Street)" class="col-md-9 col-10 border border-muted border-2 ps-2 rounded text col-8 " ></textarea>  
+               <input type="hidden" name="pay[number_of_items]" value="<%= cart_count %>">
+               <input type="hidden" name="pay[total_price]" value="<%= @total_price %>">
+               <input type="hidden" name="pay[user_id]" value="<%= current_user.id %>">
+               <input type="hidden" name="pay[product_title]" value="<%= @product_title %>">
             </div>
             </details>
            </div>
@@ -46,20 +57,20 @@
            <div class="row container ms-md-5 ms-0 my-5">
              <h4 class="col-12 car ms-4">&nbsp&nbspCard Number</h4>
              <i class="bi bi-credit-card-2-back fs-3 col-md-1 col-2 ms-5 border border-muted border-2" ></i>
-             <input type="number" name="" id="" class="col-7 w-50 text border border-muted border-2" placeholder="XXXXXXXXXXXX4151" style="min-height: 45px;">
+             <input type="number" name="pay[card_number]" required pattern=".*\S+.*" title="Search field cannot be Blank" class="col-7 w-50 text border border-muted border-2" placeholder="XXXXXXXXXXXX4151" style="min-height: 45px;">
             
             <div class="row ms-4 my-3">
                 <div class="col-md-3 my-md-0 my-3">
                     <h5 class="car1">Expiry Date</h5>
-                    <input type="number" name="" id="" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="01/24" style="min-height: 40px;">
+                    <input type="text" name="pay[expiry]" required pattern=".*\S+.*" title="Search field cannot be Blank" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="01/24" style="min-height: 40px;">
                 </div>
                 <div class="col-md-3 me-5">
                     <h5 class="car1">CVV</h5>
-                    <input type="number" name="" id="" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="333" style="min-height: 40px;">
+                    <input type="number" name="pay[cvv]" required pattern=".*\S+.*" title="Search field cannot be Blank" class="col-4 ps-2 w-50 text border border-muted border-2" placeholder="333" style="min-height: 40px;">
                 </div>
                 <div class="col-md-12  mt-3">
                     <h5 class="car1">Card Holder Name</h5>
-                    <input type="text" class=" ps-2 border border-muted  border-2 text  rounded my-1 me-3" placeholder="Name" style="min-height: 45px;">
+                    <input type="text" name="pay[card_holder]" required pattern=".*\S+.*" title="Search field cannot be Blank" class=" ps-2 border border-muted  border-2 text  rounded my-1 me-3" placeholder="Name" style="min-height: 45px;">
 
                 </div>
 

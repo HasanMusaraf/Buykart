@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_815_114_506) do
+ActiveRecord::Schema.define(version: 20_220_818_070_346) do
   create_table 'carts', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -21,6 +21,27 @@ ActiveRecord::Schema.define(version: 20_220_815_114_506) do
     t.integer 'quantity', default: 1
     t.index ['product_id'], name: 'index_carts_on_product_id'
     t.index ['user_id'], name: 'index_carts_on_user_id'
+  end
+
+  create_table 'payments', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'pincode'
+    t.string 'locality'
+    t.string 'city'
+    t.string 'state'
+    t.string 'address'
+    t.string 'expiry'
+    t.integer 'cvv'
+    t.string 'card_holder'
+    t.integer 'number_of_items'
+    t.integer 'total_price'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'product_title'
+    t.bigint 'user_id', null: false
+    t.bigint 'card_number'
+    t.bigint 'number'
+    t.index ['user_id'], name: 'index_payments_on_user_id'
   end
 
   create_table 'products', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
@@ -70,6 +91,7 @@ ActiveRecord::Schema.define(version: 20_220_815_114_506) do
 
   add_foreign_key 'carts', 'products'
   add_foreign_key 'carts', 'users'
+  add_foreign_key 'payments', 'users'
   add_foreign_key 'reviews', 'products'
   add_foreign_key 'reviews', 'users'
   add_foreign_key 'wishes', 'products', column: 'products_id'

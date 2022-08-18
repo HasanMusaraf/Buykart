@@ -21,7 +21,7 @@
           <%= f.input :name,
                     required: true,
                     autofocus: true, placeholder: "My Name",
-                    input_html: { autocomplete: "name" } %>
+                    input_html: { autocomplete: "name", pattern: ".*\S+.*", title: "Input field cannot be Blank" } %>
     
         <%= f.input :email,
                     required: true,
@@ -37,7 +37,7 @@
       </div>
     
       <div class="form-actions">
-        <%= f.button :submit, "Sign up", class:"btn btn-success mt-3" %>
+        <%= f.button :submit, "Continue", class:"btn btn-success mt-3" %>
         <%= render "devise/shared/links" %>
 
       </div>                          

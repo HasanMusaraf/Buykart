@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post 'cart', to: 'products#cart'
   get 'carts', to: 'products#carts'
   get 'del', to: 'products#del'
+  post 'payment', to: 'store#create'
+  get 'user_orders', to: 'store#user_orders'
 end

@@ -24,40 +24,38 @@
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
                     <form class="d-flex" role="search" action="/search">
-                        <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2 col-xl-5 rounded" type="search" placeholder="Search product title" required pattern=".*\S+.*" title="Search field cannot be Blank" name="q" aria-label="Search">
+                        <button class="bi bi-search border-0 me-5 search-move" type="submit"></button>
                       </form>
+
+                      
   
                     <ul class="navbar-nav mx-auto mt-3 mb-lg-0 gap-4" >
                       <li class="nav-item">
                         <a class="nav-link active nav-text" aria-current="page" href="/">Home</a>
                       </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Fashion
-                        </a>
-                        <ul class="dropdown-menu ">
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="men" name="q" class="border-0 bg-white text-dark w-100">Mens</button></form></a></li>
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="boy" name="q" class="border-0 bg-white text-dark w-100">Boys</button></form></a></li>
+                      
+                        <% if user_signed_in? && current_user.admin %>
 
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="girl" name="q" class="border-0 bg-white text-dark w-100">Girls</button></form></a></li>
-                          
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item"> <form action="/search" method="get"><button type="submit" value="lady" name="q" class="border-0 bg-white text-dark w-100">Womens</button></form></a></li>
-                        </ul>
-                      </li>
-                      <li class="heart nav-item"><a href="/wish_list" class="nav-link "> Favourite</a></li>
+                       <li class="nav-item ">
+                        <a class="nav-link " href="/user_orders" >
+                          User Order
+                        </a>
+                      </li> 
+                      
+                         <% end %>
+
+                      <li class="heart nav-item "><a href="/wish_list" class="nav-link "> Favourite</a></li>
                       <li class="nav-item">
                         <div class=" ">
 
                             <% if user_signed_in? %>
-                                <!-- <%= link_to 'Sell' ,'#', class: "navbar-item button is-dark" %> -->
             
                                 <div class="navbar-item has-dropdown is-hoverable">
-                                    <!-- <%= link_to 'Account' , edit_user_registration_path,
-                                            class: "navbar-link" %> -->
-                                    <div class="navbar-dropdown is-right d-flex jus">
+                                        <div class="navbar-dropdown is-right d-flex jus">
                                         <%= link_to (current_user.name), edit_user_registration_path,
                                             class:"align-items-center pt-2 pe-4 me-2 text-decoration-none text-muted text-capitalize" %>
                                            
@@ -84,12 +82,10 @@
                         </ul>
                       </li>
 
-                                    
-                                        
                                             <% end %>
             
                         </div>
-                                  </li>
+                       </li>
                     </ul>
                   </div>
                 </div>

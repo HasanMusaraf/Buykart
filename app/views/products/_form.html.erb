@@ -18,17 +18,17 @@
 
 
         <div class="form-inputs row g-3 ">
-          <%= f.input :brand %>
-            <%= f.input :description %>
-              <%= f.input :title %>
-                <%= f.input :price %>
-                  <%= f.input :image %>
+          <%= f.input :brand, required: true %>
+            <%= f.input :description, required: true %>
+              <%= f.input :title, required: true %>
+                <%= f.input :price, required: true %>
+                  <%= f.input :image, required: true %>
         </div>
 
 
         <div class="form-actions mt-3">
-          <%= f.button :submit, class: " btn btn-success" %>
-        </dv>
+          <%= f.button :submit, class: " btn btn-danger" %>
+        </div>
 
       <% end %>
         </div>
