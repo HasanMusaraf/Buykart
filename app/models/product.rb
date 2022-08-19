@@ -2,8 +2,8 @@
 
 class Product < ApplicationRecord
   before_destroy :not_referenced_by_any_line_item
-  belongs_to :user, optional: true
-  has_many :carts
+  # belongs_to :user, optional: true
+  has_many :carts, dependent: :destroy
 
   validates :title, :brand, :price, presence: true
   validates :description, length: { maximum: 1000, too_long: '%<count>s characters is the maximum allowed. ' }
@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   private
 
   def not_referenced_by_any_line_item
-    unless line_items.empty?
+    unless carts.empty?
       errors.add(:base, 'Line items present')
       throw :abort
     end
