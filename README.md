@@ -46,4 +46,4 @@
 
 #### For Admin :
 
-      * Admin can add and delete the products from th website.
+      * Admin can add and delete the products from the website.
