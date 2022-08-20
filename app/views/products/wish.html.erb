@@ -1,4 +1,4 @@
-<h1 class="text-center bg-success text-white p-3" style="font-family: poppins;">Favourite</h1>
+<h1 class="text-center bg-success text-white p-3" style="font-family: poppins, sans-serif;">Favourite</h1>
 
 <% list = Wish.where(users_id: current_user.id) %>
 
@@ -19,7 +19,7 @@
     
     <div class="col-md-9">
         <p><%= cur_product['title'] %> <br>
-        <small class=" rounded p-1 bg-success text-white" style="font-size: 12px;">4.2 <i class="bi bi-star-fill "></i></small>
+        <small class=" rounded p-1 bg-success text-white" style="font-size: 12px;">4.2 <em class="bi bi-star-fill "></em></small>
         </p>
         <strong class="h5">₹<%= cur_product['price'].to_i %></strong>
     </div>
