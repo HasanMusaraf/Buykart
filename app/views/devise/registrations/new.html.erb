@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <div class="container-fluid  my-3">
   <h2 class="text-center mb-4">Sign up</h2>
 
@@ -21,7 +21,7 @@
           <%= f.input :name,
                     required: true,
                     autofocus: true, placeholder: "My Name",
-                    input_html: { autocomplete: "name", pattern: ".*\S+.*", title: "Input field cannot be Blank" } %>
+                    input_html: { autocomplete: "name", pattern:"[a-z]{1,15}", title: "Input field cannot be Blank" } %>
     
         <%= f.input :email,
                     required: true,
