@@ -46,9 +46,9 @@
                         </a>
                       </li> 
 
-                      <% else %>
+                      <% elsif user_signed_in? && current_user.admin == false %>
 
-                                             <li class="nav-item ">
+                           <li class="nav-item ">
                         <a class="nav-link " href="/myorder" >
                           My Order
                         </a>

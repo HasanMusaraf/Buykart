@@ -2,6 +2,9 @@
 <h1 class="bg-success text-center text-white py-4 nav-text" >User Orders</h1>
 
 <div class="container-fluid " >
+     <% @current_user = Payment.all %>
+<% if @current_user.count > 0 %>
+
     <div class="row" style="min-height: 500px;">
 
         <div class="col-md col bg-white ">
@@ -61,6 +64,9 @@
 
 
     </div>
+    <% else %>
+    <h1>No order</h1>
+    <% end %>
 </div>
 
 
