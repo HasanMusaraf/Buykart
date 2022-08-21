@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get 'del', to: 'products#del'
   post 'payment', to: 'store#create'
   get 'user_orders', to: 'store#user_orders'
+
+  match 'status/:id', to: 'store#status', via: :get
+  get 'myorder', to: 'store#my_order'
 end

@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_818_170_812) do
+ActiveRecord::Schema.define(version: 20_220_820_113_223) do
   create_table 'carts', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20_220_818_170_812) do
     t.bigint 'user_id', null: false
     t.bigint 'card_number'
     t.bigint 'number'
+    t.boolean 'status', default: false
     t.index ['user_id'], name: 'index_payments_on_user_id'
   end
 

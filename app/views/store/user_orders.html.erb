@@ -6,27 +6,6 @@
 
         <div class="col-md col bg-white ">
             <div class="row p-3 border">
-                <!-- <div class="col-md-2">
-                    <h5>Name</h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>Product Title</h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>Quantity</h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>Total Price</h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>Phone No</h5>
-                </div>
-
-                <div class="col-md-2">
-                    <h5>Address</h5>
-                </div>
-
-<hr>  -->
 
                 <div class="row p-3">
                     <% Payment.all.each do |payment| %>
@@ -48,10 +27,6 @@
                     </div>
 
                     <div class="col-md">
-                        <small><strong> State:</strong> <%= payment.state %></small>
-                    </div>
-
-                    <div class="col-md">
                         <small><strong> City:</strong> <%= payment.city %></small>
                     </div>
 
@@ -62,6 +37,21 @@
                     <div class="col-md">
                         <small><strong> Pincode:</strong> <%= payment.pincode %></small>
                     </div>
+<% @pay = payment.status %>
+                    <div class="col-md">
+                        <small><strong> Status:</strong> 
+                            <% if @pay == false %>
+                            <form action="/status/<%=  payment.id %>"> <input type="hidden" name="order[status]" checked value = "true"  > <button type="submit" class="btn btn-primary mb-1">Complete</button>
+                               <% end %> 
+                                <% if @pay == false %>
+                        <p class="bg-warning w-50 text-center py-1">Pending</p>
+                        <% else %>
+                        <p class="bg-success w-50   text-center py-1">Completed</p>
+                        <% end %>
+                        </form> </small>
+                    </div>
+
+
 
     <hr>
                     <% end %>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<h1 class="bg-success text-center text-white py-4 nav-text" >My Order</h1>
+
+<div class="container-fluid bg-white" >
+     <% @current_user = Payment.where(user_id: current_user.id) %>
+<% if @current_user.count > 0 %>
+    <div class="row" style="min-height: 500px;">
+
+        <div class="col-md col bg-white ">
+            <div class="row p-3 border">
+
+                <div class="row p-3">
+                    <% @current_user.each do |payment| %>
+
+                    <div class="col-md">
+                        <small><strong> Name:</strong> <%= payment.name %></small>
+                    </div>
+                    <div class="col-md my-sm-0 my-2">
+                        <small><strong> Title:</strong> <%= payment.product_title %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Quantity:</strong> <%= payment.number_of_items %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Total:</strong> <%= payment.total_price %></small>
+                    </div>
+                    <div class="col-md">
+                        <small><strong> Number:</strong> <%= payment.number %></small>
+                    </div>
+
+                    <div class="col-md">
+                        <small><strong> City:</strong> <%= payment.city %></small>
+                    </div>
+
+                    <div class="col-md">
+                        <small><strong> Address:</strong> <%= payment.address %></small>
+                    </div>
+                    
+                    <div class="col-md">
+                        <small><strong> Pincode:</strong> <%= payment.pincode %></small>
+                    </div>
+<% @pay = payment.status %>
+                    <div class="col-md">
+                        <small><strong> Status:</strong> 
+                                <% if @pay == false %>
+                        <p class="bg-warning w-50 text-center py-1">Pending</p>
+                        <% else %>
+                        <p class="bg-success w-50   text-center py-1">Completed</p>
+                        <% end %>
+                        </small>
+                    </div>
+
+
+
+    <hr>
+                    <% end %>
+
+            </div>
+        </div>
+
+
+    </div>
+    <% else %>
+<div class="row">
+    <div class="col-md text-center">
+        <img src="https://cdn.dribbble.com/users/154378/screenshots/4496348/media/61d5c79ce0729fdb982073956da24cac.png?compress=1&resize=800x600&vertical=top" class="img-fluid" alt="empty">
+        <h1 class="text-muted pb-5">No Order Yet</h1>
+    </div>
+</div> 
+
+<% end %>
+</div>
+
+

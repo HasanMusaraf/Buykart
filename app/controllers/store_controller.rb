@@ -19,4 +19,12 @@ class StoreController < ApplicationController
   end
 
   def user_orders; end
+
+  def status
+    payment = Payment.find_by(id: params[:id])
+    pay = payment.update(status: params[:order][:status])
+    render 'store/user_orders'
+  end
+
+  def my_order; end
 end
