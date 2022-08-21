@@ -83,6 +83,10 @@
 
 
 <div class="container-fluid ">
+          <% @fav = Wish.where(users_id: current_user.id) %>
+
+
+
 
   <div class="row py-4 justify-content-center  gap-2 ">
     <% @products.each do |product| %>
@@ -92,7 +96,18 @@
         <%= image_tag product.image,class:"img-fluid img-thumbnail  pt-2 border-0 " %>
         <div class=" card-img-overlay ">
           <div class=" card-text pb-4">
-          <a href="/wish_item/<%= product['id'] %>" class="btn-sm btn-success me-2 bi bi-heart-fill fav"></a>
+          <a href="/wish_item/<%= product['id'] %>" class="btn-sm fs-4 bi bi-heart-fill fav
+          #{
+            <% @fav.each do |favour| %>
+                <% @favour = favour.products_id %>
+                <% if @favour == product.id %>
+                   text-danger
+                <% end %>
+            <% end %>
+
+          }
+          
+          "></a>
           
             <%= link_to 'View' , product,class:"btn-sm btn-primary text-decoration-none view" %>
 
