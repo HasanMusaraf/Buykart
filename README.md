@@ -1,5 +1,11 @@
 # Buykart
 
+### Website: https://buy-kart.herokuapp.com/
+
+### sonaCloud: https://sonarcloud.io/summary/overall?id=HasanMusaraf_Buykart
+
+### PPT: https://docs.google.com/presentation/d/1_Wht7LAKOk37bI7nuhnvZ_mIt8tUvPmPRq-cRP6VHfQ/edit#slide=id.p
+
 ### What is Buykart?
      * My App is about e-commerce for Fashion products.
      * Users can buy a fashion products using add to cart, search, filter and add products to their wishlist.
