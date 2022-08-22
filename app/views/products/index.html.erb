@@ -96,7 +96,7 @@
         <%= image_tag product.image,class:"img-fluid img-thumbnail  pt-2 border-0 " %>
         <div class=" card-img-overlay ">
           <div class=" card-text pb-4">
-          <a href="/wish_item/<%= product['id'] %>" class="btn-sm fs-4 bi bi-heart-fill fav
+          <a href="/wish_item/<%= product['id'] %>" class="btn-sm fs-4 bi bi-heart-fill fav  text-secondary
           #{
             <% @fav.each do |favour| %>
                 <% @favour = favour.products_id %>
