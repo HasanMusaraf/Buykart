@@ -27,7 +27,9 @@
        
      *  Add and Delete Cart Products (users) - users can add and delete the products to their own cart page.
        
-     *  Payment page (users) - User can make a dummy payment and the payment details, address, quantity and all the details have been stored in the database. 
+     *  Payment page (users) - User can make a dummy payment and the payment details, address, quantity and all the details have been stored in the database.
+     
+     *  My order (users) - User can check their order status.
 
 ##### SignUp :
       * If they want to shop a product, they have to signup.
@@ -52,4 +54,4 @@
 
 #### For Admin :
 
-      * Admin can add and delete the products from the website.
+      * Admin can add and delete the products also admin can check users order from the website.
