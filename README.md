@@ -1,5 +1,15 @@
 # Buykart
 
+#### Website: https://buy-kart.herokuapp.com/
+
+#### sonaCloud: https://sonarcloud.io/summary/overall?id=HasanMusaraf_Buykart
+
+#### PPT: https://docs.google.com/presentation/d/1_Wht7LAKOk37bI7nuhnvZ_mIt8tUvPmPRq-cRP6VHfQ/edit#slide=id.p
+
+### Hello! Welcome to BuyKart
+
+
+
 ### What is Buykart?
      * My App is about e-commerce for Fashion products.
      * Users can buy a fashion products using add to cart, search, filter and add products to their wishlist.
@@ -21,7 +31,9 @@
        
      *  Add and Delete Cart Products (users) - users can add and delete the products to their own cart page.
        
-     *  Payment page (users) - User can make a dummy payment and the payment details, address, quantity and all the details have been stored in the database. 
+     *  Payment page (users) - User can make a dummy payment and the payment details, address, quantity and all the details have been stored in the database.
+     
+     *  My order (users) - User can check their order status.
 
 ##### SignUp :
       * If they want to shop a product, they have to signup.
@@ -46,4 +58,4 @@
 
 #### For Admin :
 
-      * Admin can add and delete the products from the website.
+      * Admin can add and delete the products also admin can check users order from the website.
