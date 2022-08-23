@@ -35,13 +35,13 @@
   
                     <ul class="navbar-nav mx-auto mt-3 mb-lg-0 gap-4" >
                       <li class="nav-item">
-                        <a class="nav-link active nav-text home" aria-current="page" href="/">Home</a>
+                        <a class="nav-link  nav-text home" aria-current="page" href="/">Home</a>
                       </li>
                       
                         <% if user_signed_in? && current_user.admin %>
 
                        <li class="nav-item ">
-                        <a class="nav-link order" href="/user_orders" >
+                        <a class="nav-link order nav-text" href="/user_orders" >
                           Order
                         </a>
                       </li> 
@@ -49,7 +49,7 @@
                       <% elsif user_signed_in? && current_user.admin == false %>
 
                            <li class="nav-item ">
-                        <a class="nav-link my_order" href="/myorder" >
+                        <a class="nav-link my_order nav-text" href="/myorder" >
                           My Order
                         </a>
                       </li> 
@@ -57,7 +57,7 @@
                       
                          <% end %>
 
-                      <li class="heart nav-item "><a href="/wish_list" class="nav-link favourite"> Favourite</a></li>
+                      <li class="heart nav-item "><a href="/wish_list" class="nav-link favourite nav-text"> Favourite</a></li>
                       <li class="nav-item">
                         <div >
 
@@ -66,7 +66,7 @@
                                 <div class="navbar-item has-dropdown is-hoverable">
                                         <div class="navbar-dropdown is-right d-flex jus">
                                         <%= link_to (current_user.name), edit_user_registration_path,
-                                            class:"align-items-center pt-2 pe-4 me-2 text-decoration-none text-muted text-capitalize user_name" %>
+                                            class:"align-items-center pt-2 pe-4 me-2 text-decoration-none text-muted nav-text text-capitalize user_name" %>
                                            
                                     <%= link_to carts_path, class:"navbar-item text-decoration-none text-muted " do %><em
                                                 class="bi bi-cart3 kart"></em> 
@@ -79,15 +79,15 @@
                                 <% else %>
 
                                                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Account
                         </a>
                         <ul class="dropdown-menu text-center">
                           <li><%= link_to "Sign In" , new_user_session_path, class:"navbar-item
-                                        button is-warning dropdown-item " %></li>
+                                         dropdown-item " %></li>
                                         <li><hr class="dropdown-divider"></li>
                           <li><%= link_to "Sign up" , new_user_registration_path,
-                                            class:"navbar-item button is-warning dropdown-item"%></li>
+                                            class:"navbar-item  dropdown-item"%></li>
                         </ul>
                       </li>
 

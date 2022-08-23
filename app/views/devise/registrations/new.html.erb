@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+  <h2 class="text-center bg-success text-white p-3 mb-4">Sign up</h2>
+
 <div class="container-fluid  my-3">
-  <h2 class="text-center mb-4">Sign up</h2>
 
-<div class="row mx-auto w-75 border border-2 regular shadow" style="height:75vh;">
-  <div class="col-md-6  d-flex flex-column text-center justify-content-center " style="background: #aec5b8;background-image: url(https://img.freepik.com/free-photo/3d-rendering-illustration-green-balls_181624-58606.jpg?w=740&t=st=1659508294~exp=1659508894~hmac=b33cc861fac4bdf39268eb2d0f7d2b15d5c7a627ee092b0eb5809d55189e1725);">
+<div class="row mx-auto w-75 border border-2 regular shadow" style="min-height:75vh;">
+  <div class="col-md-6  d-flex flex-column text-center justify-content-center " style="background-image:  linear-gradient(rgba(0,0,0,0.8),rgba(0, 0, 0, 0.4)),url(https://img.freepik.com/free-photo/3d-rendering-illustration-green-balls_181624-58606.jpg?w=740&t=st=1659508294~exp=1659508894~hmac=b33cc861fac4bdf39268eb2d0f7d2b15d5c7a627ee092b0eb5809d55189e1725);">
        
-      <h1 class="text-white">Welcome to Buy_Kart</h1>
+      <h1 class="text-white head-bg">Welcome to Buy_Kart</h1>
 
-      <h3 class="text-white">Are you ready to join the elite?</h3>
+      <h3 class="text-white head-bg">Are you ready to join the elite?</h3>
 
   </div>
 
@@ -21,7 +22,7 @@
           <%= f.input :name,
                     required: true,
                     autofocus: true, placeholder: "My Name",
-                    input_html: { autocomplete: "name", pattern:"[a-z]{1,15}", title: "Input field cannot be Blank" } %>
+                    input_html: { autocomplete: "name", pattern:"[a-z/A-Z]{1,15}", title: "Input field cannot be Blank" } %>
     
         <%= f.input :email,
                     required: true,

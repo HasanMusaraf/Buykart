@@ -18,3 +18,15 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&family=Roboto:wght@100;300&display=swap');
+
+
+@media only screen and (max-width: 600px) {
+    .head-bg {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .mi {
+      font-size: 10px;
+    }
+  }
