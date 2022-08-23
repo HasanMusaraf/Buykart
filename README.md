@@ -1,13 +1,12 @@
 # Buykart
 
+### Hello! Welcome to BuyKart
+
 #### Website: https://buy-kart.herokuapp.com/
 
 #### sonaCloud: https://sonarcloud.io/summary/overall?id=HasanMusaraf_Buykart
 
 #### PPT: https://docs.google.com/presentation/d/1_Wht7LAKOk37bI7nuhnvZ_mIt8tUvPmPRq-cRP6VHfQ/edit#slide=id.p
-
-### Hello! Welcome to BuyKart
-
 
 
 ### What is Buykart?
@@ -59,3 +58,8 @@
 #### For Admin :
 
       * Admin can add and delete the products also admin can check users order from the website.
+
+### Technical Challenges faced:
+    #### 1. Deleting parent Table row
+    #####  Problem Statement: I have Faced error while deleting my product. The error was we couldn’t delete parent table row that linked to the Child Table.
+    ##### Solution: For the above statement I have deleted the child table row first and then executed the deleting process for Parent table row .
