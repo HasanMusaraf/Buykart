@@ -60,6 +60,15 @@
       * Admin can add and delete the products also admin can check users order from the website.
 
 ### Technical Challenges faced:
-    #### 1. Deleting parent Table row
+
+    1. Deleting parent Table row
+    
       * Problem Statement: I have Faced error while deleting my product. The error was we couldn’t delete parent table row that linked to the Child Table.
       * Solution: For the above statement I have deleted the child table row first and then executed the deleting process for Parent table row .
+
+    2. Responsive Website
+    
+       * Problem Statement: I have faced some difficulties while making my website that was alignment and spacing.
+       
+       * Solution: I have chosen Bootstrap and used Grid system Row and column for making my website responsive .
+
