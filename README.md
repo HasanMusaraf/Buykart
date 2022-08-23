@@ -61,5 +61,5 @@
 
 ### Technical Challenges faced:
     #### 1. Deleting parent Table row
-    #####  Problem Statement: I have Faced error while deleting my product. The error was we couldn’t delete parent table row that linked to the Child Table.
-    ##### Solution: For the above statement I have deleted the child table row first and then executed the deleting process for Parent table row .
+      * Problem Statement: I have Faced error while deleting my product. The error was we couldn’t delete parent table row that linked to the Child Table.
+      * Solution: For the above statement I have deleted the child table row first and then executed the deleting process for Parent table row .
