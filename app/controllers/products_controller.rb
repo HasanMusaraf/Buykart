@@ -115,7 +115,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1 or /products/1.json
   def destroy
     delete_cart = Cart.destroy_by(product_id: params[:id])
-    delete_cart = Review.destroy_by(product_id: params[:id])
+    delete_wish = Wish.destroy_by(products_id: params[:id])
+    delete_Review = Review.destroy_by(product_id: params[:id])
 
     @product = Product.find(params[:id])
     @product.destroy
